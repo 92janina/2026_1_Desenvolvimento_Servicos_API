@@ -14,3 +14,18 @@ function ler(){
     req.open("GET", "informacoes.txt", true)
     req.send()
 }
+
+function gerar(){
+    var valor = document.getElementById("txtNumero").value;
+    var div = document.getElementById("divNumeros");
+    div.innerHTML = "Carregando...";
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function(){
+        if( this.readyState == 4 && this.status == 200 ){ 
+            div.innerHTML = this.responseText;
+        }
+    }
+
+    req.open("GET" , "servidor.php?numero=" + valor , true);
+    req.send()
+}
